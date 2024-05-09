@@ -1,33 +1,99 @@
+/* Define custom colors */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Primary Color */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-color: #0056b3;
+  /* Deep Blue */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Secondary Color */
+:root {
+  --secondary-color: #03a9f4;
+  /* Lighter Blue */
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Neutral Colors */
+:root {
+  --white: #ffffff;
+  --light-grey: #f5f5f5;
+  --dark-grey: #424242;
 }
 
+/* Call-to-Action (CTA) Color */
+:root {
+  --cta-color: #76ff03;
+  /* Bright Green */
+}
+
+/* Accent Color */
+:root {
+  --accent-color: #009688;
+  /* Teal */
+}
+
+/* Override Tailwind CSS default colors */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .bg-primary {
+    background-color: var(--primary-color);
   }
+
+  .bg-secondary {
+    background-color: var(--secondary-color);
+  }
+
+  .text-primary {
+    color: var(--primary-color);
+  }
+
+  .text-secondary {
+    color: var(--secondary-color);
+  }
+
+  .bg-white {
+    background-color: var(--white);
+  }
+
+  .bg-light-grey {
+    background-color: var(--light-grey);
+  }
+
+  .bg-dark-grey {
+    background-color: var(--dark-grey);
+  }
+
+  .text-white {
+    color: var(--white);
+  }
+
+  .text-light-grey {
+    color: var(--light-grey);
+  }
+
+  .text-dark-grey {
+    color: var(--dark-grey);
+  }
+
+  .bg-cta {
+    background-color: var(--cta-color);
+  }
+
+  .bg-accent {
+    background-color: var(--accent-color);
+  }
+
+  .text-cta {
+    color: var(--cta-color);
+  }
+
+  .text-accent {
+    color: var(--accent-color);
+  }
+}
+
+/* Apply Roboto as the default font family */
+html {
+  font-family: 'Roboto', sans-serif;
 }

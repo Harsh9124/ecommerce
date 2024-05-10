@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import ProductItem from "@/components/products/ProductItem";
 import data from "@/lib/data";
 import { Metadata } from "next";

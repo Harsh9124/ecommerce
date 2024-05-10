@@ -20,8 +20,8 @@ const Menu = () => {
           >
             <IoCartOutline className="text-3xl" />
             {mounted && items.length != 0 && (
-              <div className="badge badge-secondary bg-red-600 rounded-full items-center text-xs p-1 h-5 text-center">
-                <div className="relative">
+              <div className="badge badge-secondary bg-red-600 rounded-full items-center  p-1 h-6 text-center">
+                <div className="text-xs">
                   {items.reduce((a, c) => a + c.qty, 0)}{" "}
                 </div>
               </div>

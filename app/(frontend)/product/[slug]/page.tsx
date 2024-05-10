@@ -2,7 +2,7 @@ import data from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import AddToCart from "@/components/products/AddToCart";
-import productService from "@/lib/services/ProductService";
+import productService from "@/lib/services/productService";
 import { convertDoctoObj } from "@/lib/utils";
 
 export async function generateMetadta({

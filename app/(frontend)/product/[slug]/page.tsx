@@ -2,14 +2,33 @@ import data from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import AddToCart from "@/components/products/AddToCart";
+import productService from "@/lib/services/ProductService";
+import { convertDoctoObj } from "@/lib/utils";
 
-export default function ProductDetails({
+export async function generateMetadta({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const product = await productService.getBySlug(params.slug);
+  if (!product) {
+    return {
+      title: "Product not found",
+    };
+  }
+  return {
+    title: product.name,
+    description: product.description,
+  };
+}
+
+export default async function ProductDetails({
   params,
 }: {
   params: { slug: string };
 }) {
   // Fetch the product by slug
-  const product = data.products.find((x) => x.slug === params.slug);
+  const product = await productService.getBySlug(params.slug);
   if (!product) {
     return <div className="text-dark-grey">Product not found</div>;
   }
@@ -82,15 +101,14 @@ export default function ProductDetails({
                 <div className="btn btn-primary w-full rounded-lg bg-cta text-white py-2">
                   <AddToCart
                     item={{
-                      ...product,
+                      ...convertDoctoObj(product),
                       qty: 0,
-                      color: '',
-                      size: '',
+                      color: "",
+                      size: "",
                     }}
                   />
                 </div>
               )}
-
 
               {/* Add to cart button */}
               {/* <div className="card-actions justify-center">
@@ -103,8 +121,6 @@ export default function ProductDetails({
                   Add to cart
                 </button>
               </div> */}
-
-              
             </div>
           </div>
         </div>

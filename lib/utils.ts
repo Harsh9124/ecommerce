@@ -1,1 +1,1 @@
-export const roundTo = (num: number) => Math.round(num * 100) / 100;
+export const round2 = (num: number) => Math.round(num * 100) / 100;

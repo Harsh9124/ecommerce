@@ -1,6 +1,7 @@
 import data from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
+import AddToCart from "@/components/products/AddToCart";
 
 export default function ProductDetails({
   params,
@@ -76,8 +77,23 @@ export default function ProductDetails({
                   )}
                 </div>
               </div>
+
+              {product.countInStock !== 0 && (
+                <div className="btn btn-primary w-full rounded-lg bg-cta text-white py-2">
+                  <AddToCart
+                    item={{
+                      ...product,
+                      qty: 0,
+                      color: '',
+                      size: '',
+                    }}
+                  />
+                </div>
+              )}
+
+
               {/* Add to cart button */}
-              <div className="card-actions justify-center">
+              {/* <div className="card-actions justify-center">
                 <button
                   className="btn btn-primary w-full rounded-lg bg-cta text-white py-2"
                   type="button"
@@ -86,7 +102,9 @@ export default function ProductDetails({
                 >
                   Add to cart
                 </button>
-              </div>
+              </div> */}
+
+              
             </div>
           </div>
         </div>

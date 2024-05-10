@@ -2,6 +2,7 @@ import { Product } from "@/lib/models/ProductModel";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AddToCart from "./AddToCart";
 
 function ProductItem({ product }: { product: Product }) {
   return (
@@ -29,9 +30,18 @@ function ProductItem({ product }: { product: Product }) {
           <span className="text-xl font-semibold text-gray-800">
             ${product.price}
           </span>
-          <button className="px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
-            Add to Cart
-          </button>
+          {product.countInStock !== 0 && (
+                <div className="px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                  <AddToCart
+                    item={{
+                      ...product,
+                      qty: 0,
+                      color: '',
+                      size: '',
+                    }}
+                  />
+                </div>
+              )}
         </div>
       </div>
     </div>

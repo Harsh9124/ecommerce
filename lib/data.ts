@@ -1,4 +1,20 @@
+import bcrypt from "bcryptjs";
+
 const data = {
+  users: [
+    {
+      name: "Harsh",
+      email: "admin@a.com",
+      password: bcrypt.hashSync("12345678"),
+      isAdmin: true,
+    },
+    {
+      name: "d3",
+      email: "d@d.com",
+      password: bcrypt.hashSync("123"),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
       name: "Free Shirt",
@@ -16,7 +32,7 @@ const data = {
     },
     {
       name: "Free Shirt",
-      slug: "free-shirt",
+      slug: "free-shirt1",
       category: "Shirts",
       image: "/images/shirt1.jpg",
       price: 70,
@@ -30,7 +46,7 @@ const data = {
     },
     {
       name: "Free Shirt",
-      slug: "free-shirt",
+      slug: "free-shirt3",
       category: "Shirts",
       image: "/images/shirt1.jpg",
       price: 70,
@@ -44,7 +60,7 @@ const data = {
     },
     {
       name: "Free Shirt",
-      slug: "free-shirt",
+      slug: "free-shirt4",
       category: "Shirts",
       image: "/images/shirt1.jpg",
       price: 70,
@@ -58,7 +74,7 @@ const data = {
     },
     {
       name: "Free Shirt",
-      slug: "free-shirt",
+      slug: "free-shirt5",
       category: "Shirts",
       image: "/images/shirt1.jpg",
       price: 70,

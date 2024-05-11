@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { round2 } from '../utils'
-import { OrderItem } from '../models/OrderModel'
+import { OrderItem, ShippingAddress } from '../models/OrderModel'
 import { persist } from 'zustand/middleware'
 
 type Cart = {
@@ -9,6 +9,10 @@ type Cart = {
   taxPrice: number
   shippingPrice: number
   totalPrice: number
+
+  paymentMethod: string
+  shippingAddress: ShippingAddress
+
 }
 
 const initialState: Cart = {
@@ -17,6 +21,15 @@ const initialState: Cart = {
   taxPrice: 0,
   shippingPrice: 0,
   totalPrice: 0,
+  paymentMethod: 'Gpay',
+  shippingAddress: {
+    fullName: '',
+    address: '',
+    city: '',
+    postalCode: '',
+    country: '',
+  },
+
 }
 
 export const cartStore = create<Cart>()(
@@ -35,6 +48,8 @@ export default function useCartService() {
     taxPrice,
     shippingPrice,
     totalPrice,
+    paymentMethod,
+    shippingAddress,
   } = cartStore()
 
   const calcPrice = (items: OrderItem[]) => {
@@ -44,7 +59,8 @@ export default function useCartService() {
     const shippingPrice = round2(itemsPrice > 100 ? 0 : 100)
     const taxPrice = round2(Number(0.15 * itemsPrice))
     const totalPrice = round2(itemsPrice + shippingPrice + taxPrice)
-    return { itemsPrice, shippingPrice, taxPrice, totalPrice }
+    return { itemsPrice, shippingPrice, taxPrice, totalPrice,paymentMethod,
+      shippingAddress }
   }
 
   return {
@@ -53,6 +69,8 @@ export default function useCartService() {
     taxPrice,
     shippingPrice,
     totalPrice,
+    paymentMethod,
+    shippingAddress,
     increase: (item: OrderItem) => {
       const exist = items.find((x) => x.slug === item.slug)
       const updatedCartItems = exist
@@ -89,5 +107,21 @@ export default function useCartService() {
         totalPrice,
       })
     },
+    saveShippingAddrress: (shippingAddress: ShippingAddress) => {
+      cartStore.setState({
+        shippingAddress,
+      })
+    },
+    savePaymentMethod: (paymentMethod: string) => {
+      cartStore.setState({
+        paymentMethod,
+      })
+    },
+    clear: () => {
+      cartStore.setState({
+        items: [],
+      })
+    },
+    init: () => cartStore.setState(initialState),
   }
 }

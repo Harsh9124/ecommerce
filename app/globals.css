@@ -1,3 +1,5 @@
+/* global.css */
+
 /* Define custom colors */
 @tailwind base;
 @tailwind components;
@@ -90,6 +92,77 @@
 
   .text-accent {
     color: var(--accent-color);
+  }
+
+  .table-header {
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+
+  .table-row {
+    border-bottom: 1px solid var(--light-grey);
+  }
+
+  .table-cell {
+    padding: 0.5rem 1rem;
+  }
+
+  .link-details {
+    @apply text-primary hover:text-secondary;
+  }
+
+  .input {
+    border: 1px solid var(--light-grey);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: border-color 0.3s;
+  }
+
+  .input-bordered:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .text-error {
+    color: red;
+  }
+
+  .loading-spinner {
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
 

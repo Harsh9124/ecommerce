@@ -4,6 +4,8 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function OrderDetails({
   orderId,
@@ -13,7 +15,8 @@ export default function OrderDetails({
   paypalClientId: string;
 }) {
   const { data: session } = useSession();
-  const { data, error } = useSWR(`/api/orders/${orderId}`);
+  const { data, error, mutate } = useSWR(`/api/orders/${orderId}`);
+  const [isLoading, setIsLoading] = useState(false);
 
   if (error) return error.message;
   if (!data) return "Loading...";
@@ -32,6 +35,48 @@ export default function OrderDetails({
     paidAt,
   } = data;
 
+  const isAdmin = session?.user?.isAdmin;
+
+  const markAsPaid = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch(`/api/admin/orders/${orderId}/pay`, {
+        method: "PUT",
+      });
+      if (res.ok) {
+        toast.success("Order marked as paid");
+        mutate();
+      } else {
+        const data = await res.json();
+        toast.error(data.message || "Failed to mark as paid");
+      }
+    } catch (err: any) {
+      toast.error(err.message || "Failed to mark as paid");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const markAsDelivered = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch(`/api/admin/orders/${orderId}/deliver`, {
+        method: "PUT",
+      });
+      if (res.ok) {
+        toast.success("Order marked as delivered");
+        mutate();
+      } else {
+        const data = await res.json();
+        toast.error(data.message || "Failed to mark as delivered");
+      }
+    } catch (err: any) {
+      toast.error(err.message || "Failed to mark as delivered");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="w-[80%] mx-auto">
       <h1 className="text-2xl py-4 text-center">Order {orderId}</h1>
@@ -49,7 +94,9 @@ export default function OrderDetails({
                   {shippingAddress.postalCode}, {shippingAddress.country}{" "}
                 </p>
                 <div
-                  className={`${isDelivered ? "text-success" : "text-error"}`}
+                  className={`${
+                    isDelivered ? "text-green-500" : "text-red-500"
+                  }`}
                 >
                   {isDelivered
                     ? `Delivered at ${deliveredAt}`
@@ -65,7 +112,9 @@ export default function OrderDetails({
               </h2>
               <div className="px-4 pb-2">
                 <p>{paymentMethod}</p>
-                <div className={`${isPaid ? "text-success" : "text-error"}`}>
+                <div
+                  className={`${isPaid ? "text-green-500" : "text-red-500"}`}
+                >
                   {isPaid ? `Paid at ${paidAt}` : "Not Paid"}
                 </div>
               </div>
@@ -148,6 +197,28 @@ export default function OrderDetails({
                     </div>
                   </li>
                 </ul>
+                {isAdmin && (
+                  <div className="mt-4">
+                    {!isPaid && (
+                      <button
+                        onClick={markAsPaid}
+                        className="btn btn-success w-full mb-2"
+                        disabled={isLoading}
+                      >
+                        Mark as Paid
+                      </button>
+                    )}
+                    {!isDelivered && (
+                      <button
+                        onClick={markAsDelivered}
+                        className="btn btn-success w-full"
+                        disabled={isLoading}
+                      >
+                        Mark as Delivered
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>

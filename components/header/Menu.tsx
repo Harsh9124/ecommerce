@@ -20,6 +20,10 @@ const Menu = () => {
 
   const { data: session } = useSession();
 
+  const handleClick = () => {
+    (document.activeElement as HTMLElement).blur();
+  };
+
   return (
     <div>
       <ul className="flex  gap-7 items-center text-md">
@@ -63,6 +67,11 @@ const Menu = () => {
                   tabIndex={0}
                   className="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 "
                 >
+                  {session.user.isAdmin && (
+                    <li onClick={handleClick}>
+                      <Link href="/admin/orders">Admin </Link>
+                    </li>
+                  )}
                   <li>
                     <Link href="/order-history">Order history </Link>
                   </li>

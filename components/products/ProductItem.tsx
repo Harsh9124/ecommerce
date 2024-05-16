@@ -6,7 +6,7 @@ import AddToCart from "./AddToCart";
 
 function ProductItem({ product }: { product: Product }) {
   return (
-    <div className="w-[80%] md:w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden flex flex-col justify-center">
+    <div className="w-[80%] md:w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden flex flex-col justify-center flex-wrap">
       <figure>
         <Link href={`/product/${product.slug}`}>
           <Image

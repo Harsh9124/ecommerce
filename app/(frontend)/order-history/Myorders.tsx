@@ -35,23 +35,37 @@ export default function MyOrders() {
         <tbody>
           {orders.map((order: Order) => (
             <tr key={order._id} className="table-row">
-              <td className="table-cell">{order._id.substring(20, 24)}</td>
-              <td className="table-cell">{order.createdAt.substring(0, 10)}</td>
-              <td className="table-cell">${order.totalPrice}</td>
               <td className="table-cell">
-                {order.isPaid && order.paidAt
-                  ? `${order.paidAt.substring(0, 10)}`
-                  : "not paid"}
+                <div className="text-center">{order._id.substring(20, 24)}</div>
               </td>
               <td className="table-cell">
-                {order.isDelivered && order.deliveredAt
-                  ? `${order.deliveredAt.substring(0, 10)}`
-                  : "not delivered"}
+                <div className="text-center">
+                  {order.createdAt.substring(0, 10)}
+                </div>
               </td>
               <td className="table-cell">
-                <Link href={`/order/${order._id}`} passHref>
-                  Details
-                </Link>
+                <div className="text-center">₹{order.totalPrice}</div>
+              </td>
+              <td className="table-cell">
+                <div className="text-center">
+                  {order.isPaid && order.paidAt
+                    ? `${order.paidAt.substring(0, 10)}`
+                    : "not paid"}
+                </div>
+              </td>
+              <td className="table-cell">
+                <div className="text-center">
+                  {order.isDelivered && order.deliveredAt
+                    ? `${order.deliveredAt.substring(0, 10)}`
+                    : "not delivered"}
+                </div>
+              </td>
+              <td className="table-cell">
+                <div className="text-center">
+                  <Link href={`/order/${order._id}`} passHref>
+                    Details
+                  </Link>
+                </div>
               </td>
             </tr>
           ))}

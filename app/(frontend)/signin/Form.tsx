@@ -45,7 +45,7 @@ const Form = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-light-grey">
       <div className="card max-w-sm bg-white rounded-lg shadow-lg">
-        <h1 className="text-primary text-3xl font-bold mb-4 bg-primary text-white p-2 rounded-t-lg">
+        <h1 className="text-3xl font-bold my-4 text-black p-2 rounded-t-lg flex justify-center">
           Sign in
         </h1>
         <div className="px-8 pb-8">
@@ -61,7 +61,7 @@ const Form = () => {
           )}
           <form onSubmit={handleSubmit(formSubmit)}>
             <div className="my-2">
-              <label className="label text-dark-grey" htmlFor="email">
+              <label className="label text-sm leading-5 font-semibold" htmlFor="email">
                 Email
               </label>
               <input
@@ -74,7 +74,7 @@ const Form = () => {
                     message: "Email is invalid",
                   },
                 })}
-                className="input input-bordered w-full text-dark-grey bg-white border border-gray-300 h-12"
+                className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
               />
               {errors.email?.message && (
                 <div className="text-error text-red-500">
@@ -83,7 +83,7 @@ const Form = () => {
               )}
             </div>
             <div className="my-2">
-              <label className="label text-dark-grey" htmlFor="password">
+              <label className="label text-sm leading-5 font-semibold" htmlFor="password">
                 Password
               </label>
               <input
@@ -92,7 +92,7 @@ const Form = () => {
                 {...register("password", {
                   required: "Password is required",
                 })}
-                className="input input-bordered w-full text-dark-grey bg-white border border-gray-300 h-12"
+                className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
               />
               {errors.password?.message && (
                 <div className="text-error text-red-500">
@@ -104,7 +104,7 @@ const Form = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn bg-primary text-white w-full h-12 border border-primary"
+                className="btn btn-primary text-black w-full h-12 border border-primary"
               >
                 {isSubmitting && (
                   <span className="loading loading-spinner"></span>
@@ -113,7 +113,7 @@ const Form = () => {
               </button>
             </div>
           </form>
-          <div className="text-center text-dark-grey">
+          <div className="text-center text-dark-grey font-semibold">
             Need an account?{" "}
             <Link
               className="link text-accent"

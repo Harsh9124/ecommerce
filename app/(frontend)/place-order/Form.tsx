@@ -68,8 +68,11 @@ const Form = () => {
   if (!mounted) return <></>;
 
   return (
-    <div>
-      <CheckoutSteps current={4} />
+    <div className="flex flex-row lg:flex-col">
+      <div className="my-20 mx-10 lg:my-3 hidden lg:block">
+        <CheckoutSteps current={4} />
+      </div>
+      <div>
       <div className="flex justify-center">
         <div className="grid md:grid-cols-2 md:gap-5 my-4 w-full max-w-4xl">
           <div className="overflow-x-auto p-4">
@@ -146,7 +149,7 @@ const Form = () => {
                             </div>
                           </td>
                           <td className="px-4 py-2">{item.qty}</td>
-                          <td className="px-4 py-2">${item.price}</td>
+                          <td className="px-4 py-2">₹{item.price}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -163,27 +166,27 @@ const Form = () => {
             </div>
           </div>
 
-          <div className="card bg-white shadow-lg rounded-lg overflow-hidden p-4">
-            <div className="card-body">
+          <div className="card bg-white shadow-lg rounded-lg overflow-hidden h-fit p-4">
+            <div className="card-body ">
               <h2 className="card-title text-lg font-semibold text-gray-800 mb-4">
                 Order Summary
               </h2>
               <ul className="space-y-3">
                 <li className="flex justify-between">
                   <span className="font-medium">Items</span>
-                  <span>${itemsPrice}</span>
+                  <span>₹{itemsPrice}</span>
                 </li>
                 <li className="flex justify-between">
                   <span className="font-medium">Tax</span>
-                  <span>${taxPrice}</span>
+                  <span>₹{taxPrice}</span>
                 </li>
                 <li className="flex justify-between">
                   <span className="font-medium">Shipping</span>
-                  <span>${shippingPrice}</span>
+                  <span>₹{shippingPrice}</span>
                 </li>
                 <li className="flex justify-between">
                   <span className="font-medium">Total</span>
-                  <span>${totalPrice}</span>
+                  <span>₹{totalPrice}</span>
                 </li>
                 <li>
                   <button
@@ -200,6 +203,7 @@ const Form = () => {
               </ul>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

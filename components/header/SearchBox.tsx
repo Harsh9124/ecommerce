@@ -14,31 +14,35 @@ export const SearchBox = () => {
 
   return (
     <form
-      action="/search"
-      method="GET"
-      className="flex items-center justify-center space-x-2"
-    >
-      <select
-        name="category"
-        defaultValue={category}
-        className="border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black"
-      >
-        <option value="all">All</option>
-        {categories.map((c: string) => (
-          <option key={c} className="hover:bg-primary">
-            {c}
-          </option>
-        ))}
-      </select>
-      <input
-        className="border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-        placeholder="Search"
-        defaultValue={q}
-        name="q"
-      />
-      <button className="bg-blue-500 text-white rounded px-4 py-1 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        Search
-      </button>
-    </form>
+  action="/search"
+  method="GET"
+  className="flex items-center justify-center space-x-2"
+>
+  <div className="join">
+  <select
+    name="category"
+    defaultValue={category}
+    className="border border-gray-300 rounded-s-lg p-0.5 md:px-3 md:py-2.5 focus:outline-none text-black"
+  >
+    <option value="all">All</option>
+    {categories.map((c: string) => (
+      <option key={c} value={c} className="hover:bg-primary">   
+        {c}
+      </option>
+    ))}
+  </select>
+  <input
+    className="border border-gray-300 p1 md:px-3 md:py-2 w-32 lg:w-60 focus:outline-none text-black"
+    placeholder="Search"
+    defaultValue={q}
+    name="q"
+  />
+  <button className="bg-[#D2D2D2] text-black rounded-e-lg p-1 text-sm md:text-base md:px-3 md:py-2.5 hover:bg-[#d2d2d291]">
+    Search
+  </button>
+  </div>
+</form>
+
+    
   );
 };

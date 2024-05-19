@@ -23,8 +23,11 @@ const Form = () => {
   }, [paymentMethod, router, shippingAddress.address]);
 
   return (
-    <div>
-      <CheckoutSteps current={2} />
+    <div className="flex flex-row lg:flex-col">
+      <div className="my-20 mx-10 lg:my-3">
+        <CheckoutSteps current={2} />
+      </div>
+      <div className="my-20 mx-10 lg:my-3">
       <div className="max-w-sm mx-auto card bg-base-300 my-4">
         <div className="card-body">
           <h1 className="card-title py-4 text-2xl font-semibold">
@@ -66,6 +69,7 @@ const Form = () => {
               </button>
             </div>
           </form>
+        </div>
         </div>
       </div>
     </div>

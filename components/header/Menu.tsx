@@ -3,12 +3,13 @@ import { IoCartOutline } from "react-icons/io5";
 import useCartService from "@/lib/hooks/useCartStore";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const Menu = () => {
   const { items, init } = useCartService();
   const [mounted, setMounted] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -20,23 +21,24 @@ const Menu = () => {
 
   const { data: session } = useSession();
 
-  const handleClick = () => {
-    (document.activeElement as HTMLElement).blur();
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleDropdownClose = () => {
+    setDropdownOpen(false);
   };
 
   return (
     <div>
-      <ul className="flex  gap-7 items-center text-md">
+      <ul className="flex gap-7 items-center text-md">
         <li>
-          <Link
-            className="btn btn-ghost rounded-btn flex flex-row"
-            href="/cart"
-          >
-            <IoCartOutline className="text-3xl" />
-            {mounted && items.length != 0 && (
-              <div className="badge badge-secondary bg-red-600 rounded-full items-center  p-1 h-6 text-center">
+          <Link className="btn rounded-btn flex flex-row" href="/cart">
+            <IoCartOutline className="text-3xl text-black" />
+            {mounted && items.length !== 0 && (
+              <div className="badge badge-secondary bg-pink-600 rounded-full items-center px-2 py-1 h-6 text-center">
                 <div className="text-xs">
-                  {items.reduce((a, c) => a + c.qty, 0)}{" "}
+                  {items.reduce((a, c) => a + c.qty, 0)}
                 </div>
               </div>
             )}
@@ -45,16 +47,20 @@ const Menu = () => {
         {session && session.user ? (
           <>
             <li>
-              <div className="dropdown dropdown-bottom dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost rounded-btn">
-                  {session.user.name}
+              <div className="dropdown relative text-black">
+                <button
+                  type="button"
+                  className="flex flex-row font-semibold"
+                  onClick={handleDropdownToggle}
+                >
+                  <span>{session.user.name}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-6 h-6 ml-1"
                   >
                     <path
                       strokeLinecap="round"
@@ -62,35 +68,38 @@ const Menu = () => {
                       d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                     />
                   </svg>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 "
-                >
-                  {session.user.isAdmin && (
-                    <li onClick={handleClick}>
-                      <Link href="/admin/orders">Admin </Link>
+                </button>
+                {dropdownOpen && (
+                  <ul
+                    tabIndex={0}
+                    className="menu dropdown-content z-[1] p-2 shadow bg-primary flex flex-col items-center rounded-lg w-44 absolute mt-4 right-0 font-semibold"
+                    onClick={handleDropdownClose}
+                  >
+                    {session.user.isAdmin && (
+                      <li onClick={handleDropdownClose}>
+                        <Link href="/admin/orders">Admin</Link>
+                      </li>
+                    )}
+                    <li onClick={handleDropdownClose}>
+                      <Link href="/order-history">Order history</Link>
                     </li>
-                  )}
-                  <li>
-                    <Link href="/order-history">Order history </Link>
-                  </li>
-                  <li>
-                    <Link href="/profile">Profile</Link>
-                  </li>
-                  <li>
-                    <button type="button" onClick={signoutHandler}>
-                      Sign out
-                    </button>
-                  </li>
-                </ul>
+                    <li onClick={handleDropdownClose}>
+                      <Link href="/profile">Profile</Link>
+                    </li>
+                    <li>
+                      <button type="button" onClick={signoutHandler}>
+                        Sign out
+                      </button>
+                    </li>
+                  </ul>
+                )}
               </div>
             </li>
           </>
         ) : (
           <li>
             <button
-              className="btn btn-ghost rounded-btn"
+              className="btn text-black rounded-btn"
               type="button"
               onClick={() => signIn()}
             >

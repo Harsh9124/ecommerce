@@ -8,7 +8,7 @@ const getLatest = cache(async () => {
   await dbConnect();
   const products = await ProductModel.find({})
     .sort({ _id: -1 })
-    .limit(6)
+    .limit(8)
     .lean();
   return products as Product[];
 });

@@ -77,11 +77,11 @@ const Form = () => {
 
   return (
     <div className="max-w-md mx-auto my-8 p-6 bg-white shadow-lg rounded-lg">
-      <h1 className="text-2xl font-semibold text-primary mb-4">Profile</h1>
+      <h1 className="text-2xl font-semibold text-black mb-4">Profile</h1>
       <form onSubmit={handleSubmit(formSubmit)}>
         <div className="mb-4">
           <label
-            className="block text-sm font-medium text-dark-grey mb-1"
+            className="block text-sm font-medium text-dark-grey mb-1 font-semibold"
             htmlFor="name"
           >
             Name
@@ -92,7 +92,7 @@ const Form = () => {
             {...register("name", {
               required: "Name is required",
             })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
           />
           {errors.name?.message && (
             <div className="text-sm text-red-600 mt-1">
@@ -102,7 +102,7 @@ const Form = () => {
         </div>
         <div className="mb-4">
           <label
-            className="block text-sm font-medium text-dark-grey mb-1"
+            className="block text-sm font-medium text-dark-grey mb-1 font-semibold"
             htmlFor="email"
           >
             Email
@@ -117,7 +117,7 @@ const Form = () => {
                 message: "Email is invalid",
               },
             })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
           />
           {errors.email?.message && (
             <div className="text-sm text-red-600 mt-1">
@@ -127,7 +127,7 @@ const Form = () => {
         </div>
         <div className="mb-4">
           <label
-            className="block text-sm font-medium text-dark-grey mb-1"
+            className="block text-sm font-medium text-dark-grey mb-1 font-semibold"
             htmlFor="password"
           >
             New Password
@@ -136,7 +136,7 @@ const Form = () => {
             type="password"
             id="password"
             {...register("password", {})}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
           />
           {errors.password?.message && (
             <div className="text-sm text-red-600 mt-1">
@@ -146,7 +146,7 @@ const Form = () => {
         </div>
         <div className="mb-4">
           <label
-            className="block text-sm font-medium text-dark-grey mb-1"
+            className="block text-sm font-medium text-dark-grey mb-1 font-semibold"
             htmlFor="confirmPassword"
           >
             Confirm New Password
@@ -160,7 +160,7 @@ const Form = () => {
                 return password === value || "Passwords should match!";
               },
             })}
-            className="input input-bordered w-full"
+            className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
           />
           {errors.confirmPassword?.message && (
             <div className="text-sm text-red-600 mt-1">

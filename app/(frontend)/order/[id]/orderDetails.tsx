@@ -84,7 +84,7 @@ export default function OrderDetails({
         <div className="md:col-span-3">
           <div className="card bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="card-body">
-              <h2 className="card-title text-lg font-semibold text-gray-800 mb-4 bg-primary text-white p-4">
+              <h2 className="card-title text-lg font-semibold mb-4 text-white bg-blue p-4">
                 Shipping Address
               </h2>
               <div className="px-4 pb-2">
@@ -107,7 +107,7 @@ export default function OrderDetails({
           </div>
           <div className="card bg-white shadow-lg rounded-lg overflow-hidden mt-4">
             <div className="card-body">
-              <h2 className="card-title text-lg font-semibold text-gray-800 mb-4 bg-primary text-white p-4">
+              <h2 className="card-title text-lg font-semibold  mb-4 text-white bg-blue p-4">
                 Payment Method
               </h2>
               <div className="px-4 pb-2">
@@ -122,7 +122,7 @@ export default function OrderDetails({
           </div>
           <div className="card bg-white shadow-lg rounded-lg overflow-hidden mt-4">
             <div className="card-body">
-              <h2 className="card-title text-lg font-semibold text-gray-800 mb-4 bg-primary text-white p-4">
+              <h2 className="card-title text-lg font-semibold mb-4 text-white bg-blue p-4">
                 Items
               </h2>
               <div className="overflow-x-auto">
@@ -155,7 +155,7 @@ export default function OrderDetails({
                           </Link>
                         </td>
                         <td className="px-4 py-2">{item.qty}</td>
-                        <td className="px-4 py-2">${item.price}</td>
+                        <td className="px-4 py-2">₹{item.price}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -167,7 +167,7 @@ export default function OrderDetails({
         <div>
           <div className="card bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="card-body">
-              <h2 className="card-title text-lg font-semibold text-gray-800 mb-4 bg-primary text-white p-4">
+              <h2 className="card-title text-lg font-semibold mb-4 text-white bg-blue  p-4">
                 Order Summary
               </h2>
               <div className="px-4">
@@ -175,25 +175,25 @@ export default function OrderDetails({
                   <li>
                     <div className="mb-2 flex justify-between">
                       <div>Items</div>
-                      <div>${itemsPrice}</div>
+                      <div>₹{itemsPrice}</div>
                     </div>
                   </li>
                   <li>
                     <div className="mb-2 flex justify-between">
                       <div>Tax</div>
-                      <div>${taxPrice}</div>
+                      <div>₹{taxPrice}</div>
                     </div>
                   </li>
                   <li>
                     <div className="mb-2 flex justify-between">
                       <div>Shipping</div>
-                      <div>${shippingPrice}</div>
+                      <div>₹{shippingPrice}</div>
                     </div>
                   </li>
                   <li>
                     <div className="mb-2 flex justify-between">
                       <div>Total</div>
-                      <div>${totalPrice}</div>
+                      <div>₹{totalPrice}</div>
                     </div>
                   </li>
                 </ul>
@@ -211,7 +211,7 @@ export default function OrderDetails({
                     {!isDelivered && (
                       <button
                         onClick={markAsDelivered}
-                        className="btn btn-success w-full"
+                        className="btn btn-success w-full mb-4"
                         disabled={isLoading}
                       >
                         Mark as Delivered

@@ -23,13 +23,13 @@ export default function MyOrders() {
     <div className="overflow-x-auto bg-white p-4 shadow-md rounded-lg">
       <table className="table w-full border-collapse">
         <thead>
-          <tr className="table-header">
-            <th className="table-cell">ID</th>
-            <th className="table-cell">DATE</th>
-            <th className="table-cell">TOTAL</th>
-            <th className="table-cell">PAID</th>
-            <th className="table-cell">DELIVERED</th>
-            <th className="table-cell">ACTION</th>
+          <tr className="table-header rounded-lg">
+            <th className="table-cell text-white bg-blue rounded-s-lg">ID</th>
+            <th className="table-cell text-white bg-blue">DATE</th>
+            <th className="table-cell text-white bg-blue">TOTAL</th>
+            <th className="table-cell text-white bg-blue">PAID</th>
+            <th className="table-cell text-white bg-blue">DELIVERED</th>
+            <th className="table-cell text-white bg-blue rounded-e-lg">ACTION</th>
           </tr>
         </thead>
         <tbody>

@@ -18,14 +18,14 @@ export default function CartDetails() {
 
   return (
     <>
-      <h1 className="py-4 text-3xl font-bold text-center text-primary">
+      <h1 className="py-4 text-3xl font-bold text-center text-black">
         Shopping Cart
       </h1>
 
       {items.length === 0 ? (
         <div className="font-semibold text-center text-lg">
           Cart is empty.{" "}
-          <Link href="/" className="text-secondary hover:underline">
+          <Link href="/" className="text-cta hover:underline">
             Go shopping
           </Link>
         </div>
@@ -35,10 +35,10 @@ export default function CartDetails() {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="text-lg bg-light-grey text-dark-grey">
-                    <th className="py-3 px-4 text-left">Item</th>
+                  <tr className="text-lg text-dark-grey">
+                    <th className="py-3 px-4 text-center md:text-left">Item</th>
                     <th className="py-3 px-4 text-center">Quantity</th>
-                    <th className="py-3 px-4 text-right">Price</th>
+                    <th className="py-3 px-4 text-center md:text-right">Price</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,18 +47,22 @@ export default function CartDetails() {
                       <td className="py-4 px-4">
                         <Link
                           href={`/product/${item.slug}`}
-                          className="flex items-center"
+                          className="items-center flex flex-col md:flex-row"
                         >
+                          <div>
                           <Image
                             src={item.image}
                             alt={item.name}
                             width={100}
                             height={100}
-                            className="m-3 bg-white shadow-md rounded-lg"
+                            className=" shadow-md rounded-lg"
                           />
-                          <span className="px-4 text-lg font-bold">
+                          </div>
+                          <div className="w-fit m-2 md:m-4">
+                          <span className="text-lg font-bold text-center">
                             {item.name}
                           </span>
+                          </div>
                         </Link>
                       </td>
 
@@ -82,7 +86,7 @@ export default function CartDetails() {
                         </div>
                       </td>
                       <td className="py-4 px-4 text-right text-lg font-bold">
-                        ${item.price.toFixed(2)}
+                      ₹{item.price.toFixed(2)}
                       </td>
                     </tr>
                   ))}
@@ -91,12 +95,12 @@ export default function CartDetails() {
             </div>
           </div>
 
-          <div className="col-span-2">
+          <div className="col-span-2 mb-4">
             <div className="bg-white shadow-md rounded-lg p-6">
               <div>
                 <div className="text-xl font-semibold mb-4">
                   Subtotal ({items.reduce((a, c) => a + c.qty, 0)} items) :{" "}
-                  <span className="text-primary">${itemsPrice.toFixed(2)}</span>
+                  <span className="text-black">₹{itemsPrice.toFixed(2)}</span>
                 </div>
                 <button
                   onClick={() => router.push("/shipping")}

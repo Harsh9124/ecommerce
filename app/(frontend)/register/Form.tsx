@@ -71,15 +71,15 @@ const Form = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-light-grey">
+    <div className="flex justify-center items-center min-h-screen ">
       <div className="card max-w-sm bg-white rounded-lg shadow-lg">
-        <h1 className="text-primary text-3xl font-bold mb-4 bg-primary text-white p-2 rounded-t-lg">
+        <h1 className="text-black text-3xl font-bold my-4 p-2 rounded-t-lg flex justify-center">
           Register
         </h1>
         <div className="px-8 pb-8">
           <form onSubmit={handleSubmit(formSubmit)}>
             <div className="my-4">
-              <label className="label text-dark-grey" htmlFor="name">
+              <label className="label text-sm leading-5 font-bold" htmlFor="name">
                 Name
               </label>
               <input
@@ -88,7 +88,7 @@ const Form = () => {
                 {...register("name", {
                   required: "Name is required",
                 })}
-                className="input input-bordered w-full text-dark-grey bg-white border border-gray-300 h-12"
+                className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
               />
               {errors.name?.message && (
                 <div className="text-error text-red-500">
@@ -97,7 +97,7 @@ const Form = () => {
               )}
             </div>
             <div className="my-4">
-              <label className="label text-dark-grey" htmlFor="email">
+              <label className="label text-sm leading-5 font-bold" htmlFor="email">
                 Email
               </label>
               <input
@@ -110,7 +110,7 @@ const Form = () => {
                     message: "Email is invalid",
                   },
                 })}
-                className="input input-bordered w-full text-dark-grey bg-white border border-gray-300 h-12"
+                className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
               />
               {errors.email?.message && (
                 <div className="text-error text-red-500">
@@ -120,7 +120,7 @@ const Form = () => {
               )}
             </div>
             <div className="my-4">
-              <label className="label text-dark-grey" htmlFor="password">
+              <label className="label text-sm leading-5 font-bold" htmlFor="password">
                 Password
               </label>
               <input
@@ -129,7 +129,7 @@ const Form = () => {
                 {...register("password", {
                   required: "Password is required",
                 })}
-                className="input input-bordered w-full text-dark-grey bg-white border border-gray-300 h-12"
+                className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
               />
               {errors.password?.message && (
                 <div className="text-error text-red-500">
@@ -138,7 +138,7 @@ const Form = () => {
               )}
             </div>
             <div className="my-4">
-              <label className="label text-dark-grey" htmlFor="confirmPassword">
+              <label className="label text-sm leading-5 font-bold" htmlFor="confirmPassword">
                 Confirm Password
               </label>
               <input
@@ -151,7 +151,7 @@ const Form = () => {
                     return password === value || "Passwords should match!";
                   },
                 })}
-                className="input input-bordered w-full text-dark-grey bg-white border border-gray-300 h-12"
+                className="input input-bordered w-full max-w-sm border border-gray-400 rounded-md shadow-inner outline-none p-2"
               />
               {errors.confirmPassword?.message && (
                 <div className="text-error text-red-500">
@@ -163,7 +163,7 @@ const Form = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn bg-primary text-white w-full h-12 border border-primary"
+                className="btn btn-primary text-black w-full h-12 border border-primary"
               >
                 {isSubmitting && (
                   <span className="loading loading-spinner"></span>
@@ -174,7 +174,7 @@ const Form = () => {
           </form>
 
           <div className="divider my-4"></div>
-          <div className="text-center text-dark-grey">
+          <div className="text-center text-dark-grey font-semibold">
             Already have an account?{" "}
             <Link
               className="link text-accent"

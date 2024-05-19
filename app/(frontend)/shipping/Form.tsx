@@ -68,8 +68,11 @@ const Form = () => {
       )
 
       return (
-        <div>
+        <div className="flex flex-row lg:flex-col">
+          <div className="my-20 mx-10 lg:my-3">
           <CheckoutSteps current={1} />
+          </div>
+          <div>
           <div className="max-w-sm mx-auto card bg-base-300 my-4">
             <div className="card-body">
               <h1 className="card-title py-4 text-2xl font-semibold">Shipping Address</h1>
@@ -92,6 +95,7 @@ const Form = () => {
                   </button>
                 </div>
               </form>
+            </div>
             </div>
           </div>
         </div>

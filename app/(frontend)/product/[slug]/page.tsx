@@ -36,7 +36,7 @@ export default async function ProductDetails({
   return (
     <>
       {/* Back to products link */}
-      <div className="my-2 text-primary font-semibold">
+      <div className="my-2 text-black font-semibold">
         <Link href="/">Back to products</Link>
       </div>
 
@@ -50,7 +50,7 @@ export default async function ProductDetails({
             width={640}
             height={640}
             sizes="100vw"
-            className="rounded-lg shadow-lg"
+            className="rounded-lg shadow-lg mb-3"
             style={{
               width: "100%",
               height: "auto",
@@ -62,10 +62,10 @@ export default async function ProductDetails({
         <div className="md:col-span-1 lg:col-span-1">
           {/* Product details */}
           <div className="mb-6">
-            <h1 className="text-2xl font-semibold text-primary mb-2">
+            <h1 className="text-2xl font-semibold text-black mb-2">
               {product.name}
             </h1>
-            <p className="text-secondary mb-2">
+            <p className="text-black mb-2">
               {product.rating} out of {product.numReviews} reviews
             </p>
             <p className="text-dark-grey mb-2">
@@ -78,12 +78,12 @@ export default async function ProductDetails({
           </div>
 
           {/* Purchase card */}
-          <div className="card bg-white shadow-lg rounded-lg p-4">
+          <div className="card bg-primary shadow-lg rounded-lg p-4 mb-4">
             <div className="card-body">
               <div className="mb-3">
                 <div className="text-dark-grey font-semibold">Price</div>
                 <div className="text-accent font-semibold text-lg">
-                  ${product.price}
+                ₹{product.price}
                 </div>
               </div>
               <div className="mb-3">
@@ -98,7 +98,7 @@ export default async function ProductDetails({
               </div>
 
               {product.countInStock !== 0 && (
-                <div className="btn btn-primary w-full rounded-lg bg-cta text-white py-2">
+                <div>
                   <AddToCart
                     item={{
                       ...convertDoctoObj(product),

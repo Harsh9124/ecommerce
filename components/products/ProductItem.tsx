@@ -28,7 +28,7 @@ function ProductItem({ product }: { product: Product }) {
         <p className="text-sm text-gray-600 mb-2">{product.brand}</p>
         <div className="flex justify-between items-center mb-2">
           <span className="text-xl font-semibold text-gray-800">
-            ${product.price}
+          ₹{product.price}
           </span>
           {product.countInStock !== 0 && (
             <div>

@@ -21,15 +21,15 @@ const AdminLayout = async ({
   }
 
   return (
-    <div className="relative flex flex-grow bg-light-grey">
+    <div className="relative flex flex-grow ">
       <div className="w-full grid md:grid-cols-5">
         <div className="bg-white border-r border-light-grey">
           <ul className="menu p-4">
             <li>
               <Link
-                className={`block py-2 px-4 rounded-md transition-colors duration-300 ${
+                className={`block py-2 px-4 rounded-md transition-colors duration-300  ${
                   activeItem === "orders"
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-white btn-primary"
                     : "text-dark-grey hover:bg-light-grey"
                 }`}
                 href="/admin/orders"
@@ -39,9 +39,9 @@ const AdminLayout = async ({
             </li>
             <li>
               <Link
-                className={`block py-2 px-4 rounded-md transition-colors duration-300 ${
+                className={`block py-2 px-4 rounded-md transition-colors duration-300  ${
                   activeItem === "products"
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-white btn-primary"
                     : "text-dark-grey hover:bg-light-grey"
                 }`}
                 href="/admin/products"
@@ -53,7 +53,7 @@ const AdminLayout = async ({
               <Link
                 className={`block py-2 px-4 rounded-md transition-colors duration-300 ${
                   activeItem === "users"
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-white btn-primary"
                     : "text-dark-grey hover:bg-light-grey"
                 }`}
                 href="/admin/users"

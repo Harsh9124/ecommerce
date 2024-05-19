@@ -21,7 +21,7 @@ export default function AddToCart({ item }: { item: OrderItem }) {
 
   return (
     <button
-      className="btn btn-primary w-full"
+      className="btn btn-primary w-full btn-primary:hover"
       type="button"
       onClick={addToCartHandler}
     >

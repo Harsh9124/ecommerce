@@ -62,14 +62,14 @@ export default async function SearchPage({
   });
   return (
     <div className="grid md:grid-cols-5 md:gap-5">
-      <div>
-        <div className="text-xl pt-3">Categories</div>
+      <div className="bg-primary mt-5 px-6 py-7 rounded-md">
+        <div className="text-xl font-semibold">Categories</div>
         <div>
           <ul>
             <li>
               <Link
                 className={`link link-hover ${
-                  "all" === category && "link-primary"
+                  "all" === category && "link-primary font-semibold"
                 }`}
                 href={getFilterUrl({ c: "all" })}
               >
@@ -80,7 +80,7 @@ export default async function SearchPage({
               <li key={c}>
                 <Link
                   className={`link link-hover ${
-                    c === category && "link-primary"
+                    c === category && "link-primary font-semibold"
                   }`}
                   href={getFilterUrl({ c })}
                 >
@@ -93,7 +93,7 @@ export default async function SearchPage({
       </div>
       <div className="md:col-span-4">
         <div className="flex items-center justify-between  py-4">
-          <div className="flex items-center">
+          <div className="flex items-center font-semibold">
             {products.length === 0 ? "No" : countProducts} Results
             {q !== "all" && q !== "" && " : " + q}
             {category !== "all" && " : " + category}
@@ -115,13 +115,13 @@ export default async function SearchPage({
               />
             ))}
           </div>
-          <div className="join">
+          <div className="join m-5">
             {products.length > 0 &&
               Array.from(Array(pages).keys()).map((p) => (
                 <Link
                   key={p}
-                  className={`join-item btn ${
-                    Number(page) === p + 1 ? "btn-active" : ""
+                  className={`join-item px-3 py-2 rounded-full bg-primary m-2 ${
+                    Number(page) === p + 1 ? "btn-active btn-primary" : ""
                   } `}
                   href={getFilterUrl({ pg: `${p + 1}` })}
                 >

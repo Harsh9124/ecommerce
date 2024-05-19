@@ -33,7 +33,7 @@ const CheckoutSteps = ({ current = 0 }) => {
             )}
             <div
               className={`flex-1 py-2 text-center rounded-full p-3 m-1 lg:m-3 ${
-                index <= current ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                index <= current ? 'bg-[#ffc125] text-black' : 'bg-gray-200'
               }`}
             >
               {step}

@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+
 import ProductItem from "@/components/products/ProductItem";
 import data from "@/lib/data";
 import { Metadata } from "next";
-import productService from "@/lib/services/ProductService";
+import productService from "@/lib/services/productService";
 import Link from "next/link";
 import { convertDoctoObj } from "@/lib/utils";
 
@@ -52,7 +53,7 @@ export default async function Home() {
         ))}
       </div>
       <h2 className="text-2xl font-bold mb-4">Latest Products</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-3 lg:grid-cols-4">
         {latestProducts.map((product) => (
           <ProductItem key={product.slug} product={convertDoctoObj(product)} />
         ))}

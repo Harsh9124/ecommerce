@@ -1,193 +1,200 @@
-/* global.css */
+  /* global.css */
 
-/* Define custom colors */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  /* Define custom colors */
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
 
-/* Primary Color */
-:root {
-  --primary-color: #E5E6E6;
-  /* Deep Blue */
-}
-
-/* Secondary Color */
-:root {
-  --secondary-color: #E5E6E6;
-  /* Lighter Blue */
-}
-:root {
-  --third-color: #e9b124;
-}
-:root {
-  --btn-color: #ffc125;
-}
-
-/* Neutral Colors */
-:root {
-  --white: #ffffff;
-  --light-grey: #f5f5f5;
-  --dark-grey: #424242;
-  --black:#000000;
-  --blue: #02A4FD;
-}
-
-/* Call-to-Action (CTA) Color */
-:root {
-  --cta-color: #00ff26;
-  /* Bright Green */
-}
-
-/* Accent Color */
-:root {
-  --accent-color: #009688;
-  /* Teal */
-}
-
-:root {
-  --color-background-light: #ffffff;
-  --color-background-dark: #121212;
-  --color-text-light: #000000;
-}
-
-/* Override Tailwind CSS default colors */
-@layer utilities {
-  .bg-primary {
-    background-color: var(--primary-color);
+  .typing-container {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid;
+    display: inline-block;
+    font-family: monospace; 
+  }
+  /* Primary Color */
+  :root {
+    --primary-color: #E5E6E6;
+    /* Deep Blue */
   }
 
-  .bg-secondary {
-    background-color: var(--secondary-color);
+  /* Secondary Color */
+  :root {
+    --secondary-color: #E5E6E6;
+    /* Lighter Blue */
+  }
+  :root {
+    --third-color: #e9b124;
+  }
+  :root {
+    --btn-color: #ffc125;
   }
 
-  .text-primary {
-    color: var(--primary-color);
+  /* Neutral Colors */
+  :root {
+    --white: #ffffff;
+    --light-grey: #f5f5f5;
+    --dark-grey: #424242;
+    --black:#000000;
+    --blue: #02A4FD;
   }
 
-  .text-secondary {
-    color: var(--secondary-color);
+  /* Call-to-Action (CTA) Color */
+  :root {
+    --cta-color: #00ff26;
+    /* Bright Green */
   }
 
-  .bg-white {
-    background-color: var(--white);
+  /* Accent Color */
+  :root {
+    --accent-color: #009688;
+    /* Teal */
   }
 
-  .bg-light-grey {
-    background-color: var(--light-grey);
+  :root {
+    --color-background-light: #ffffff;
+    --color-background-dark: #121212;
+    --color-text-light: #000000;
   }
 
-  .bg-dark-grey {
-    background-color: var(--dark-grey);
-  }
-
-  .text-white {
-    color: var(--white);
-  }
-
-  .text-light-grey {
-    color: var(--light-grey);
-  }
-
-  .text-dark-grey {
-    color: var(--dark-grey);
-  }
-  .bg-blue{
-    background-color: var(--blue);
-  }
-
-  .bg-cta {
-    background-color: var(--cta-color);
-  }
-
-  .bg-accent {
-    background-color: var(--accent-color);
-  }
-
-  .text-cta {
-    color: var(--cta-color);
-  }
-
-  .text-accent {
-    color: var(--accent-color);
-  }
-
-  .table-header {
-    background-color: var(--primary-color);
-    color: var(--white);
-  }
-
-  .table-row {
-    border-bottom: 1px solid var(--light-grey);
-  }
-
-  .table-cell {
-    padding: 0.5rem 1rem;
-  }
-
-  .link-details {
-    @apply text-primary hover:text-secondary;
-  }
-
-  .input {
-    border: 1px solid var(--light-grey);
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    transition: border-color 0.3s;
-  }
-
-  .input-bordered:focus {
-    border-color: var(--primary-color);
-    outline: none;
-  }
-
-  .btn {
-    /* display: inline-block; */
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.25rem;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .btn-primary {
-    background-color: var(--btn-color);
-    color: var(--black);
-  }
-
-  .btn-primary:hover {
-    background-color: var(--third-color);
-  }
-  .btn-success{
-    background-color: var(--btn-color);
-  }
-
-  .text-error {
-    color: red;
-  }
-
-  .loading-spinner {
-    border: 2px solid transparent;
-    border-top: 2px solid white;
-    border-radius: 50%;
-    width: 1rem;
-    height: 1rem;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
+  /* Override Tailwind CSS default colors */
+  @layer utilities {
+    .bg-primary {
+      background-color: var(--primary-color);
     }
 
-    100% {
-      transform: rotate(360deg);
+    .bg-secondary {
+      background-color: var(--secondary-color);
+    }
+
+    .text-primary {
+      color: var(--primary-color);
+    }
+
+    .text-secondary {
+      color: var(--secondary-color);
+    }
+
+    .bg-white {
+      background-color: var(--white);
+    }
+
+    .bg-light-grey {
+      background-color: var(--light-grey);
+    }
+
+    .bg-dark-grey {
+      background-color: var(--dark-grey);
+    }
+
+    .text-white {
+      color: var(--white);
+    }
+
+    .text-light-grey {
+      color: var(--light-grey);
+    }
+
+    .text-dark-grey {
+      color: var(--dark-grey);
+    }
+    .bg-blue{
+      background-color: var(--blue);
+    }
+
+    .bg-cta {
+      background-color: var(--cta-color);
+    }
+
+    .bg-accent {
+      background-color: var(--accent-color);
+    }
+
+    .text-cta {
+      color: var(--cta-color);
+    }
+
+    .text-accent {
+      color: var(--accent-color);
+    }
+
+    .table-header {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+
+    .table-row {
+      border-bottom: 1px solid var(--light-grey);
+    }
+
+    .table-cell {
+      padding: 0.5rem 1rem;
+    }
+
+    .link-details {
+      @apply text-primary hover:text-secondary;
+    }
+
+    .input {
+      border: 1px solid var(--light-grey);
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      transition: border-color 0.3s;
+    }
+
+    .input-bordered:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+
+    .btn {
+      /* display: inline-block; */
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--btn-color);
+      color: var(--black);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--third-color);
+    }
+    .btn-success{
+      background-color: var(--btn-color);
+    }
+
+    .text-error {
+      color: red;
+    }
+
+    .loading-spinner {
+      border: 2px solid transparent;
+      border-top: 2px solid white;
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
   }
-}
 
-/* Apply Roboto as the default font family */
-html {
-  font-family: 'Roboto', sans-serif;
-}
+  /* Apply Roboto as the default font family */
+  html {
+    font-family: 'Roboto', sans-serif;
+  }

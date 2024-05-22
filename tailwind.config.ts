@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -8,13 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      keyframes: {
+        typing: {
+          '0%': { width: '0ch' },
+          '50%': { width: '25ch' },  // Adjust '25ch' based on the length of your longest text
+          '100%': { width: '0ch' },  // Erase the text
+        },
+        blink: {
+          '0%, 100%': { borderColor: 'transparent' },
+          '50%': { borderColor: 'black' },
+        },
+      },
+      animation: {
+        typing: 'typing 4s steps(25,end) 1s infinite normal both, blink .7s step-end infinite',
       },
     },
   },
   plugins: [],
 };
+
 export default config;

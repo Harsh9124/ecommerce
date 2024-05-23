@@ -4,11 +4,14 @@ import ProductModel, { Product } from "@/lib/models/ProductModel";
 
 export const revalidate = 3600;
 
-const getLatest = cache(async () => {
+
+
+const getLatest = cache(async (skipCount: number, limitCount: number) => {
   await dbConnect();
   const products = await ProductModel.find({})
     .sort({ _id: -1 })
-    .limit(8)
+    .skip(skipCount)
+    .limit(limitCount)
     .lean();
   return products as Product[];
 });
@@ -16,7 +19,7 @@ const getLatest = cache(async () => {
 const getFeatured = cache(async () => {
   await dbConnect();
   const products = await ProductModel.find({ isFeatured: true })
-    .limit(3)
+    .limit(4)
     .lean();
   return products as Product[];
 });

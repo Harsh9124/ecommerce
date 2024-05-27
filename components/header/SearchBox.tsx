@@ -7,7 +7,7 @@ export const SearchBox = () => {
   const q = searchParams.get("q") || "";
   const category = searchParams.get("category") || "All";
 
-  const { data: categories, error } = useSWR("/api/products/categories");
+  const { data: categories, error } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/products/categories`);
 
   if (error) return <p className="text-red-500">{error.message}</p>;
   if (!categories) return <p>Loading...</p>;

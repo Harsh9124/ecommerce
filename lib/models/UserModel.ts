@@ -14,4 +14,12 @@ const UserSchema = new mongoose.Schema(
 
 const UserModel = mongoose.models?.User || mongoose.model("User", UserSchema);
 
+export interface User {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  isAdmin: boolean;
+}
+
 export default UserModel;

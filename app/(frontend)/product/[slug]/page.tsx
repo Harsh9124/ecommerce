@@ -5,7 +5,7 @@ import AddToCart from "@/components/products/AddToCart";
 import productService from "@/lib/services/productService";
 import { convertDoctoObj } from "@/lib/utils";
 
-export async function generateMetadta({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };

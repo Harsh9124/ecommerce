@@ -4,14 +4,14 @@ const orderSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
       required: true,
     },
     items: [
       {
         product: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Product',
+          ref: "Product",
           required: true,
         },
         name: { type: String, required: true },
@@ -34,6 +34,8 @@ const orderSchema = new mongoose.Schema(
     shippingPrice: { type: Number, required: true },
     taxPrice: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
+    isPending: { type: Boolean, required: true, default: true },
+    isProcessing: { type: Boolean, required: true, default: false },
     isPaid: { type: Boolean, required: true, default: false },
     isDelivered: { type: Boolean, required: true, default: false },
     paidAt: { type: Date },
@@ -42,35 +44,37 @@ const orderSchema = new mongoose.Schema(
   {
     timestamps: true,
   }
-)
-const OrderModel = mongoose.models.Order || mongoose.model('Order', orderSchema)
+);
+const OrderModel =
+  mongoose.models.Order || mongoose.model("Order", orderSchema);
 
-export default OrderModel
+export default OrderModel;
 
 export type Order = {
-  _id: string
-  user?: { name: string }
-  items: [OrderItem]
+  _id: string;
+  user?: { name: string };
+  items: [OrderItem];
   shippingAddress: {
-    fullName: string
-    address: string
-    city: string
-    postalCode: string
-    country: string
-  }
-  paymentMethod: string
-  paymentResult?: { id: string; status: string; email_address: string }
-  itemsPrice: number
-  shippingPrice: number
-  taxPrice: number
-  totalPrice: number
-  isPaid: boolean
-  isDelivered: boolean
-  paidAt?: string
-  deliveredAt?: string
-  createdAt: string
-}
-
+    fullName: string;
+    address: string;
+    city: string;
+    postalCode: string;
+    country: string;
+  };
+  paymentMethod: string;
+  paymentResult?: { id: string; status: string; email_address: string };
+  itemsPrice: number;
+  shippingPrice: number;
+  taxPrice: number;
+  totalPrice: number;
+  isPending: boolean;
+  isProcessing: boolean;
+  isPaid: boolean;
+  isDelivered: boolean;
+  paidAt?: string;
+  deliveredAt?: string;
+  createdAt: string;
+};
 
 export type OrderItem = {
   name: string;
@@ -83,9 +87,9 @@ export type OrderItem = {
 };
 
 export type ShippingAddress = {
-  fullName: string
-  address: string
-  city: string
-  postalCode: string
-  country: string
-}
+  fullName: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+};

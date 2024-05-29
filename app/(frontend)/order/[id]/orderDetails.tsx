@@ -290,7 +290,13 @@ import useSWR from "swr";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-export default function OrderDetails({ orderId }: { orderId: string }) {
+export default function OrderDetails({
+  orderId,
+  paypalClientId,
+}: {
+  orderId: string;
+  paypalClientId: string;
+}) {
   const { data: session } = useSession();
   const { data, error, mutate } = useSWR(`/api/orders/${orderId}`);
   const [isLoading, setIsLoading] = useState(false);

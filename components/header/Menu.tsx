@@ -77,7 +77,7 @@ const Menu = () => {
                   >
                     {session.user.isAdmin && (
                       <li onClick={handleDropdownClose}>
-                        <Link href="/admin/orders">Admin</Link>
+                        <Link href="/admin/dashboard">Admin DashBoard</Link>
                       </li>
                     )}
                     <li onClick={handleDropdownClose}>

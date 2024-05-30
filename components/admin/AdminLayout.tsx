@@ -28,6 +28,18 @@ const AdminLayout = async ({
             <li>
               <Link
                 className={`block py-2 px-4 rounded-md transition-colors duration-300  ${
+                  activeItem === "dashboard"
+                    ? "bg-primary text-white btn-primary"
+                    : "text-dark-grey hover:bg-light-grey"
+                }`}
+                href="/admin/dashboard"
+              >
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={`block py-2 px-4 rounded-md transition-colors duration-300  ${
                   activeItem === "orders"
                     ? "bg-primary text-white btn-primary"
                     : "text-dark-grey hover:bg-light-grey"
